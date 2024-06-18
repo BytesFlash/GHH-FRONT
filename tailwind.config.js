@@ -25,6 +25,9 @@ module.exports = {
         },
       },
       colors: {
+        blueghh: {
+          1000: '#002e46'
+        },
         slate: {
           1000: '#0a101f',
         },

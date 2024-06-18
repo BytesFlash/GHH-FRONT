@@ -38,8 +38,9 @@
               transition-colors
               duration-300
             ">
-            <img class="h-full w-full object-cover" src="/img/logo/logGHH-300x123.png" alt="Cars in line" width="576"
-              height="576" />
+            <img class="h-full w-full object-cover"
+              :src="!mobileOpen && !scrolled ? '/img/logo/logGHH-white.png' : '/img/logo/logGHH-black.png'"
+              alt="Cars in line" width="576" height="576" />
           </div>
         </a>
 
@@ -62,34 +63,39 @@
                 absolute
                 w-7
                 h-0.5
-                text-white
                 bg-current
                 transition
                 duration-500
                 ease-in-out
-              " :class="mobileOpen ? 'rotate-45' : '-translate-y-2'"></span>
+              " :class="[
+              mobileOpen ? 'rotate-45' : '-translate-y-2 ',
+              scrolled || mobileOpen ? 'text-black' : 'text-white',
+            ]"></span>
             <span class="
                 block
                 absolute
                 w-5
                 h-0.5
-                text-white
                 bg-current
                 transition
                 duration-500
                 ease-in-out
-              " :class="mobileOpen ? 'opacity-0' : ''"></span>
+              " :class="{
+                'opacity-0': mobileOpen,
+                'text-black': mobileOpen || scrolled, 
+                'text-white': !mobileOpen && !scrolled,
+              }"></span>
             <span class="
                 block
                 absolute
                 w-7
                 h-0.5
-                text-white
                 bg-current
                 transition
                 duration-500
                 ease-in-out
-              " :class="mobileOpen ? '-rotate-45' : 'translate-y-2'"></span>
+              " :class="[mobileOpen ? '-rotate-45' : 'translate-y-2',
+              scrolled || mobileOpen ? 'text-black' : 'text-white',]"></span>
           </div>
         </button>
       </div>
@@ -111,14 +117,16 @@
                 items-center
                 gap-1
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-              " :class="[
-              megamenuOpened ? 'z-40' : 'z-50',
-              scrolled ? 'text-black' : 'text-white' ,
-            ]">
+              " :class="{
+                'z-40': megamenuOpened,
+                'z-50': !megamenuOpened,
+                'text-white': !scrolled && !mobileOpen,
+                'text-black': scrolled,
+              }">
               <span>Vehiculos</span>
               <iconify-icon class="
                   iconify
@@ -129,8 +137,8 @@
                   duration-300
                 " :class="[
                 openedMegamenu === 'megamenu-1' && megamenuOpened ? 'rotate-180' : '',
-                scrolled ? 'text-black' : 'text-white' ,
-              ]" icon="lucide:chevron-down"></iconify-icon>
+
+                ]" icon="lucide:chevron-down"></iconify-icon>
             </button>
 
             <!--Megamenu-->
@@ -144,14 +152,16 @@
                 items-center
                 gap-1
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-              " :class="[
-              megamenuOpened ? 'z-40' : 'z-50',
-              scrolled ? 'text-black' : 'text-white' ,
-            ]">
+              " :class="{
+              'z-40': megamenuOpened,
+              'z-50': !megamenuOpened,
+              'text-white': !scrolled && !mobileOpen,
+              'text-black': scrolled,
+              }">
               <span>Servicios</span>
               <iconify-icon class="
                   iconify
@@ -162,8 +172,7 @@
                   duration-300
                 " :class="[
                 openedMegamenu === 'megamenu-2' && megamenuOpened ? 'rotate-180' : '',
-                scrolled ? 'text-black' : 'text-white' ,
-              ]" icon="lucide:chevron-down"></iconify-icon>
+            ]" icon="lucide:chevron-down"></iconify-icon>
             </button>
             <!--Megamenu-->
             {{> navigation/megamenu-brands}}
@@ -172,14 +181,16 @@
             <a href="/inventory.html" class="
                 block
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-              " :class="[
-              megamenuOpened ? 'z-40' : 'z-50',
-              scrolled ? 'text-black' : 'text-white' ,
-            ]">
+              " :class="{
+              'z-40': megamenuOpened,
+              'z-50': !megamenuOpened,
+              'text-white': !scrolled && !mobileOpen,
+              'text-black': scrolled,
+              }">
               Nosotros
             </a>
           </li>
@@ -188,48 +199,20 @@
             <a href="/contact.html" class="
                 block
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-              " :class="[
-              scrolled ? 'text-black' : 'text-white' ,
-            ]">
+              " :class="{
+              'text-white': !scrolled && !mobileOpen,
+              'text-black': scrolled,
+          }">
               Contactanos
             </a>
           </li>
 
         </ul>
-        <div class="flex flex-col my-3 lg:hidden">
-          <div class="flex items-center justify-center mb-4">
-            <!--Dark mode-->
-            {{> theme/theme-toggler}}
-          </div>
-          <a href="/signup.html" class="
-              relative
-              w-full
-              font-sans font-normal
-              inline-flex
-              items-center
-              justify-center
-              leading-5
-              no-underline
-              min-w-[130px]
-              space-x-1
-              text-white
-              bg-primary-500
-              h-12
-              px-5
-              py-3
-              text-base
-              hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/20
-              tw-accessibility
-              transition-all
-              duration-300
-            ">
-            Register
-          </a>
-        </div>
+
       </div>
 
       <div class="
