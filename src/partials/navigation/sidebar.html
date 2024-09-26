@@ -1,6 +1,4 @@
-<div
-  x-cloak
-  class="
+<div x-cloak class="
     fixed
     top-0
     left-0
@@ -13,16 +11,12 @@
     dark:bg-muted-900
     transition-all
     duration-300
-  "
-  :class="[
+  " :class="[
     $store.app.isSidebarActive ? '-translate-x-full lg:translate-x-0' : 'lg:-translate-x-full',
     $store.app.isSidebarMobileActive ? 'translate-x-0' : '-translate-x-full',
-  ]"
->
+  ]">
   <div class="w-full h-[80px] flex items-center justify-between px-6">
-    <a
-      href="/home.html"
-      class="
+    <a href="/home.html" class="
         group
         flex
         font-sans font-light
@@ -30,24 +24,18 @@
         gap-4
         text-muted-800
         dark:text-white
-      "
-    >
-      <div
-        class="
+      ">
+      <div class="
           h-12
           w-12
           group-hover:text-primary-500
           transition-colors
           duration-300
-        "
-      >
-        {{> vector/logos/logo}}
+        ">
       </div>
     </a>
     <!--Desktop button-->
-    <button
-      type="button"
-      class="
+    <button type="button" class="
         ml-auto
         h-10
         w-10
@@ -59,15 +47,12 @@
         dark:hover:bg-muted-800
         transition-colors
         duration-300
-      "
-      @click="$store.app.isSidebarActive = false"
-    >
-      <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-600 dark:text-muted-200" icon="lucide:arrow-left"></iconify-icon>
+      " @click="$store.app.isSidebarActive = false">
+      <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-600 dark:text-muted-200"
+        icon="lucide:arrow-left"></iconify-icon>
     </button>
     <!--Mobile button-->
-    <button
-      type="button"
-      class="
+    <button type="button" class="
         ml-auto
         h-10
         w-10
@@ -79,75 +64,54 @@
         dark:hover:bg-muted-800
         transition-colors
         duration-300
-      "
-      @click="$store.app.isSidebarMobileActive = false"
-    >
-      <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-600 dark:text-muted-200" icon="lucide:arrow-left"></iconify-icon>
+      " @click="$store.app.isSidebarMobileActive = false">
+      <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-600 dark:text-muted-200"
+        icon="lucide:arrow-left"></iconify-icon>
     </button>
   </div>
   <div class="w-full h-[calc(100%_-_80px)] flex flex-col py-6 px-4">
     <ul>
       <li>
-        <a
-          href="/dashboard.html"
-          class="flex items-center gap-3 p-4 transition-colors duration-300"
+        <a href="/dashboard.html" class="flex items-center gap-3 p-4 transition-colors duration-300"
           :class="$store.app.activeApp === 'dashboard' ? 'text-muted-800 dark:text-muted-100 bg-muted-100 dark:bg-muted-800' : 'text-muted-500 dark:text-muted-400/80 hover:bg-muted-50 dark:hover:bg-muted-800/50'"
-          @click="$store.app.activeApp = 'dashboard', $store.isSidebarMobileActive = false"
-        >
-          <iconify-icon
-            class="iconify w-5 h-5 flex items-center justify-center text-xl"
+          @click="$store.app.activeApp = 'dashboard', $store.isSidebarMobileActive = false">
+          <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl"
             :class="$store.app.activeApp === 'dashboard' ? 'text-primary-500' : 'text-muted-500'"
-            icon="ph:grid-four-duotone"
-          ></iconify-icon>
+            icon="ph:grid-four-duotone"></iconify-icon>
           <span class="font-sans">Dashboard</span>
         </a>
       </li>
       <li>
-        <a
-          href="/dashboard-account.html"
-          class="flex items-center gap-3 p-4 transition-colors duration-300"
+        <a href="/dashboard-account.html" class="flex items-center gap-3 p-4 transition-colors duration-300"
           :class="$store.app.activeApp === 'account' ? 'text-muted-800 dark:text-muted-100 bg-muted-100 dark:bg-muted-800' : 'text-muted-500 dark:text-muted-400/80 hover:bg-muted-50 dark:hover:bg-muted-800/50'"
-          @click="$store.app.activeApp = 'account', $store.isSidebarMobileActive = false"
-        >
-          <iconify-icon
-            class="iconify w-5 h-5 flex items-center justify-center text-xl"
+          @click="$store.app.activeApp = 'account', $store.isSidebarMobileActive = false">
+          <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl"
             :class="$store.app.activeApp === 'account' ? 'text-primary-500' : 'text-muted-500'"
-            icon="ph:user-duotone"
-          ></iconify-icon>
+            icon="ph:user-duotone"></iconify-icon>
           <span class="font-sans text-muted-800 dark:text-muted-500">
             Account
           </span>
         </a>
       </li>
       <li>
-        <a
-          href="/dashboard-schedule.html"
-          class="flex items-center gap-3 p-4 transition-colors duration-300"
+        <a href="/dashboard-schedule.html" class="flex items-center gap-3 p-4 transition-colors duration-300"
           :class="$store.app.activeApp === 'schedule' ? 'text-muted-800 dark:text-muted-100 bg-muted-100 dark:bg-muted-800' : 'text-muted-500 dark:text-muted-400/80 hover:bg-muted-50 dark:hover:bg-muted-800/50'"
-          @click="$store.app.activeApp = 'schedule', $store.isSidebarMobileActive = false"
-        >
-          <iconify-icon
-            class="iconify w-5 h-5 flex items-center justify-center text-xl"
+          @click="$store.app.activeApp = 'schedule', $store.isSidebarMobileActive = false">
+          <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl"
             :class="$store.app.activeApp === 'schedule' ? 'text-primary-500' : 'text-muted-500'"
-            icon="ph:circles-four-duotone"
-          ></iconify-icon>
+            icon="ph:circles-four-duotone"></iconify-icon>
           <span class="font-sans text-muted-800 dark:text-muted-500">
             Schedule
           </span>
         </a>
       </li>
       <li>
-        <a
-          href="/dashboard-bookmarks.html"
-          class="flex items-center gap-3 p-4 transition-colors duration-300"
+        <a href="/dashboard-bookmarks.html" class="flex items-center gap-3 p-4 transition-colors duration-300"
           :class="$store.app.activeApp === 'bookmarks' ? 'text-muted-800 dark:text-muted-100 bg-muted-100 dark:bg-muted-800' : 'text-muted-500 dark:text-muted-400/80 hover:bg-muted-50 dark:hover:bg-muted-800/50'"
-          @click="$store.app.activeApp = 'bookmarks', $store.isSidebarMobileActive = false"
-        >
-          <iconify-icon
-            class="iconify w-5 h-5 flex items-center justify-center text-xl"
+          @click="$store.app.activeApp = 'bookmarks', $store.isSidebarMobileActive = false">
+          <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl"
             :class="$store.app.activeApp === 'bookmarks' ? 'text-primary-500' : 'text-muted-500'"
-            icon="ph:car-duotone"
-          ></iconify-icon>
+            icon="ph:car-duotone"></iconify-icon>
           <span class="font-sans text-muted-800 dark:text-muted-500">
             Favorites
           </span>
@@ -158,9 +122,7 @@
     <div class="mt-auto">
       <ul>
         <li>
-          <a
-            href="/home.html"
-            class="
+          <a href="/home.html" class="
               flex
               items-center
               gap-3
@@ -169,9 +131,9 @@
               dark:hover:bg-muted-800
               transition-colors
               duration-300
-            "
-          >
-            <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-500" icon="ph:sign-out-duotone"></iconify-icon>
+            ">
+            <iconify-icon class="iconify w-5 h-5 flex items-center justify-center text-xl text-muted-500"
+              icon="ph:sign-out-duotone"></iconify-icon>
             <span class="font-sans text-muted-800 dark:text-muted-500">
               Logout
             </span>

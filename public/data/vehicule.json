@@ -1,0 +1,50 @@
+{
+    "vehicules": [
+        {
+            "brand": "Land Rover",
+            "model": "Range Rover Velardgggd",
+            "price": 65000,
+            "availability": "Available for local delivery",
+            "icon": "path/to/landrover-icon.svg",
+            "image": "path/to/11.png",
+            "detailsUrl": "path/to/vehicle.html",
+            "specs": {
+                "0-60mph": "4.4s",
+                "topSpeed": "135mph",
+                "autonomy": "389mi"
+            },
+            "features": [
+                "Midnight Silver Metallic Paint",
+                "20’’ Überturbine Wheels",
+                "All Black Premium Interior"
+            ],
+            "upgrades": [
+                "Performance Upgrade",
+                "Carbon Fiber Spoiler"
+            ]
+        },
+        {
+            "brand": "Hyundai",
+            "model": "Ioniq 5",
+            "price": 39000,
+            "availability": "Available for local delivery",
+            "icon": "path/to/hyundai-icon.svg",
+            "image": "path/to/7.png",
+            "detailsUrl": "path/to/vehicle.html",
+            "specs": {
+                "0-60mph": "4.8s",
+                "topSpeed": "105mph",
+                "autonomy": "429mi"
+            },
+            "features": [
+                "Lunar Silver Metallic Paint",
+                "17’’ Rensteel Wheels",
+                "Coffee Leather Interior"
+            ],
+            "upgrades": [
+                "Digital display windshield",
+                "Phantom LED lights"
+            ]
+        }
+    ]
+}

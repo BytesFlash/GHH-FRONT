@@ -1,5 +1,4 @@
-<div
-  class="
+<div class="
     fixed
     lg:absolute
     top-0
@@ -14,15 +13,11 @@
     lg:-translate-x-1/4
     transition-all
     duration-300
-  "
-  x-bind:class="{
+  " x-bind:class="{
     'opacity-100 translate-y-0 z-50': openedMegamenu === 'megamenu-2',
     'opacity-0 translate-y-1 pointer-events-none z-0': openedMegamenu !== 'megamenu-2'
-  }"
-  x-cloak
->
-  <div
-    class="
+  }" x-cloak>
+  <div class="
       relative
       w-full
       px-3
@@ -35,12 +30,9 @@
       dark:border-muted-700
       shadow-2xl shadow-muted-500/20
       dark:shadow-muted-800/20
-    "
-  >
+    ">
     <!--Close button-->
-    <button
-      type="button"
-      class="
+    <button type="button" class="
         absolute
         top-2
         right-2
@@ -52,14 +44,20 @@
         justify-center
         text-muted-600
         dark:text-muted-200
-      "
-      @click="megamenuOpened = false, openedMegamenu = ''"
-    >
+      " @click="megamenuOpened = false, openedMegamenu = ''">
       <iconify-icon class="iconify w-6 h-6" icon="lucide:x"></iconify-icon>
     </button>
 
     <!--Grid-->
-    <div
+
+    <div class="
+    grid
+  ">
+      <h2 class="text-center text-2xl font-bold text-gray-800 ">Sección en proceso</h2>
+    </div>
+
+
+    <!--    <div
       class="
         grid
         md:grid-cols-2
@@ -72,10 +70,7 @@
         ltablet:pb-10
       "
     >
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -85,28 +80,22 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/hyundai-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/hyundai-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            Hyundai
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
-            Korea
-          </p>
-        </div>
-      </a>
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+            ">
+          Hyundai
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+          Korea
+        </p>
+      </div>
+    </a>
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -116,28 +105,22 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/bmw-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/bmw-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            BMW
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
-            Germany
-          </p>
-        </div>
-      </a>
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+            ">
+          BMW
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+          Germany
+        </p>
+      </div>
+    </a>
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -147,26 +130,20 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/jaguar-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/jaguar-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            Jaguar
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">UK</p>
-        </div>
-      </a>
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+            ">
+          Jaguar
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">UK</p>
+      </div>
+    </a>
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -176,28 +153,22 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/mercedes-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/mercedes-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            Mercedes
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
-            Germany
-          </p>
-        </div>
-      </a>
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+            ">
+          Mercedes
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+          Germany
+        </p>
+      </div>
+    </a>
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -207,28 +178,22 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/landrover-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/landrover-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            Landrover
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
-            UK
-          </p>
-        </div>
-      </a>
-      <!--Grid item-->
-      <a
-        href="/inventory.html"
-        class="
+            ">
+          Landrover
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+          UK
+        </p>
+      </div>
+    </a>
+    <a href="/inventory.html" class="
           relative
           flex
           gap-4
@@ -238,24 +203,21 @@
           z-10
           transition-colors
           duration-300
-        "
-      >
-        <div class="w-10 text-muted-500">{{> vector/logos/audi-icon}}</div>
-        <div>
-          <h4
-            class="
+        ">
+      <div class="w-10 text-muted-500">{{> vector/logos/audi-icon}}</div>
+      <div>
+        <h4 class="
               font-heading font-semibold
               text-sm text-muted-800
               dark:text-white
-            "
-          >
-            Audi
-          </h4>
-          <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
-            Germany
-          </p>
-        </div>
-      </a>
-    </div>
+            ">
+          Audi
+        </h4>
+        <p class="font-sans text-xs text-muted-500 dark:text-muted-400">
+          Germany
+        </p>
+      </div>
+    </a>
+  </div> -->
   </div>
 </div>

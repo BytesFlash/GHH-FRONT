@@ -9,10 +9,11 @@
     
   " x-data="navbar()" x-init="initTheme()" x-on:scroll.window="scroll()"
   x-on:mouseleave="megamenuOpened = false, openedMegamenu = ''" x-bind:class="{
-    'bg-white dark:bg-muted-800 shadow-lg shadow-muted-400/10 dark:shadow-muted-800/10': scrolled,
+    'bg-white shadow-lg shadow-muted-400/10': scrolled,
     '': !scrolled,
-    'bg-white dark:bg-muted-800': mobileOpen,
-    '': !mobileOpen
+    'bg-white dark:bg-white-800': mobileOpen,
+    '': !mobileOpen,
+    
 }">
 
 
@@ -178,7 +179,7 @@
             {{> navigation/megamenu-brands}}
           </li>
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="/inventory.html" class="
+            <a href="/" class="
             block
             text-base
             font-semibold 
@@ -189,14 +190,14 @@
           'z-40': megamenuOpened,
           'z-50': !megamenuOpened,
           'text-white': !scrolled && !mobileOpen,
-          'text-black': scrolled,
+          'text-black': scrolled && mobileOpen,
           }">
               Nosotros
             </a>
           </li>
 
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="/contact.html" class="
+            <a href="/" class="
                 block
                 text-base
                 font-semibold 
@@ -210,90 +211,7 @@
               Contactanos
             </a>
           </li>
-
         </ul>
-
-      </div>
-
-      <div class="
-          hidden
-          lg:flex lg:items-center lg:w-1/5 lg:justify-end lg:gap-x-2
-        ">
-        <button type="button" class="
-            group
-            h-12
-            w-12
-            rounded-full
-            flex
-            items-center
-            justify-center
-            tw-accessibility
-          ">
-          <div class="
-              h-10
-              w-10
-              flex
-              items-center
-              justify-center
-              rounded-full
-              text-white
-              group-hover:text-primary-500
-              transition-colors
-              duration-300
-            ">
-            <iconify-icon class="iconify w-4 h-4" icon="lucide:search"></iconify-icon>
-          </div>
-        </button>
-        <div class="h-10 w-10 flex items-center justify-center">
-          <!--Dark mode-->
-          {{> theme/theme-toggler}}
-        </div>
-        <a href="/dashboard-bookmarks.html" class="
-            relative
-            font-sans font-normal
-            inline-flex
-            items-center
-            justify-center
-            leading-5
-            no-underline
-            space-x-1
-            text-white
-            bg-muted-800/30
-            dark:bg-muted-900
-            h-10
-            w-10
-            text-base
-            hover:bg-muted-700
-            dark:hover:bg-muted-1000
-            tw-accessibility
-            transition-all
-            duration-300
-          ">
-          <iconify-icon class="iconify w-4 h-4" icon="lucide:heart"></iconify-icon>
-        </a>
-        <a href="/dashboard.html" class="
-            relative
-            font-sans font-normal
-            inline-flex
-            items-center
-            justify-center
-            leading-5
-            no-underline
-            space-x-1
-            text-white
-            bg-muted-800/30
-            dark:bg-muted-900
-            h-10
-            w-10
-            text-base
-            hover:bg-muted-700
-            dark:hover:bg-muted-1000
-            tw-accessibility
-            transition-all
-            duration-300
-          ">
-          <iconify-icon class="iconify w-4 h-4" icon="lucide:user"></iconify-icon>
-        </a>
       </div>
     </div>
   </div>
