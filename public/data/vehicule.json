@@ -1,13 +1,12 @@
 {
     "vehicules": [
         {
-            "brand": "Land Rover",
-            "model": "Range Rover Velardgggd",
-            "price": 65000,
-            "availability": "Available for local delivery",
-            "icon": "path/to/landrover-icon.svg",
-            "image": "path/to/11.png",
+            "brand": "Maquina de perforación",
+            "model": "FM 1.7",
+            "icon": "/img/vehicles/grid/Face-Master-1.7_2.png",
+            "image": "/img/vehicles/grid/Face-Master-1.7_2.png",
             "detailsUrl": "path/to/vehicle.html",
+            "detail": "Equipo de perforación mecanizado está diseñado para perforar tiros de diámetros entre 41 mm y 76 mm y con una longitud neta de 3,2 m y ajustable según necesidades de operación. El diseño permite la perforación eficaz en secciones desde una altura de 2.0 m.",
             "specs": {
                 "0-60mph": "4.4s",
                 "topSpeed": "135mph",

@@ -1,74 +1,18 @@
-<script>
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('inventory', () => ({
-      vehicles: [],
-      async init() {
-        const response = await fetch('data/vehicule.json');
-        const data = await response.json();
-        this.vehicles = data.vehicules;
-      }
-    }));
-  });
-</script>
-
-<!-- HTML for Inventory Grid -->
-<section x-data="inventory()" class="w-full py-12 px-4 bg-muted-100 dark:bg-muted-1000">
-  <div class="relative w-full h-full max-w-7xl mx-auto">
-    <!--Inventory toolbar-->
-    <!-- Add your toolbar here -->
-
-    <!--Grid wrapper-->
-    <div class="py-10">
-      <div class="grid grid-cols-12 md:gap-12 pb-20">
-        <!--Filters-->
-        <div class="hidden lg:block col-span-12 lg:col-span-3">
-          <!-- Add filters here if needed -->
-        </div>
-
-        <!--Content-->
-        <div class="col-span-12 lg:col-span-9">
-          <!--Subgrid-->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <template x-for="vehicle in vehicles" :key="vehicle.model">
-              <div class="p-4 border dark:border-muted-700 rounded-lg">
-                <img :src="vehicle.image" alt="vehicle model" class="w-full h-auto">
-                <h3 class="mt-2 font-bold text-lg" x-text="vehicle.brand + ' ' + vehicle.model"></h3>
-                <p class="mt-1 text-gray-600" x-text="'Price: $' + vehicle.price"></p>
-                <p class="text-sm text-gray-500" x-text="vehicle.availability"></p>
-
-                <div class="mt-2">
-                  <h4 class="font-bold">Specifications:</h4>
-                  <ul class="list-disc list-inside">
-                    <li x-text="'0-60 mph: ' + vehicle.specs['0-60mph']"></li>
-                    <li x-text="'Top Speed: ' + vehicle.specs.topSpeed"></li>
-                    <li x-text="'Autonomy: ' + vehicle.specs.autonomy"></li>
-                  </ul>
-                </div>
-
-                <div class="mt-2">
-                  <h4 class="font-bold">Features:</h4>
-                  <ul class="list-disc list-inside">
-                    <template x-for="feature in vehicle.features" :key="feature">
-                      <li x-text="feature"></li>
-                    </template>
-                  </ul>
-                </div>
-
-                <div class="mt-2">
-                  <h4 class="font-bold">Upgrades:</h4>
-                  <ul class="list-disc list-inside">
-                    <template x-for="upgrade in vehicle.upgrades" :key="upgrade">
-                      <li x-text="upgrade"></li>
-                    </template>
-                  </ul>
-                </div>
-
-                <a :href="vehicle.detailsUrl" class="text-blue-600 hover:underline mt-4 inline-block">View details</a>
-              </div>
-            </template>
-          </div>
+<div class="relative w-full h-full max-w-7xl mx-auto">
+  <div class="py-10">
+    <div class="grid grid-cols-12 md:gap-2 pb-20">
+      <div class="col-span-12 lg:col-span-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <template x-for="vehicle in filteredVehicles()" :key="vehicle.model">
+            <div class="p-4 border dark:border-muted-700 rounded-lg">
+              <img :src="vehicle.image" alt="vehicle model" class="w-full h-auto">
+              <h3 class="mt-2 font-bold text-lg" x-text="vehicle.brand + ' ' + vehicle.model"></h3>
+              <p class="mt-2" x-text="vehicle.detail"></p>
+              <a :href="vehicle.detailsUrl" class="text-blue-600 hover:underline mt-4 inline-block">Ficha técnica</a>
+            </div>
+          </template>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>

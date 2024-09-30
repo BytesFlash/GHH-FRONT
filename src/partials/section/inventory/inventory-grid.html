@@ -1,17 +1,50 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('inventory', () => ({
+      vehicles: [],
+      dataLoaded: false,  // Control para verificar si los datos ya fueron cargados
+      activeBrand: 'all',  // Para controlar la marca seleccionada
+      async init() {
+        // Solo carga los datos si no han sido cargados previamente
+        if (!this.dataLoaded) {
+          const response = await fetch('data/vehicule.json');  // Verifica que la ruta sea correcta
+          const data = await response.json();
+          this.vehicles = data.vehicules;  // Cargar los vehículos desde el JSON
+          this.dataLoaded = true;  // Marcar como cargado
+        }
+      },
+      filteredVehicles() {
+        if (this.activeBrand === "all") {
+          return this.vehicles;
+        } else {
+          return this.vehicles.filter(vehicle => vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase());
+        }
+
+      },
+      resetScroll() {
+        window.scrollTo(0, 0);  // Opcional, para regresar el scroll al tope
+      }
+    }));
+  });
+</script>
+
 <section x-data="inventory()" class="w-full py-12 px-4 bg-muted-100 dark:bg-muted-1000">
   <div class="relative w-full h-full max-w-7xl mx-auto">
+
     <!--Inventory toolbar-->
     {{> section/inventory/inventory-toolbar}}
 
     <!--Grid wrapper-->
     <div class="py-10">
       <div class="grid grid-cols-12 md:gap-12 pb-20">
+
         <!--Filters-->
-        <div class="hidden lg:block col-span-12 lg:col-span-3">
-          {{> section/inventory/inventory-grid-filters}}
-        </div>
+        <!-- <div class="hidden lg:block col-span-12 lg:col-span-3"> 
+             {{!-- {{> section/inventory/inventory-grid-filters}} --}}
+        </div> -->
+
         <!--Content-->
-        <div class="col-span-12 lg:col-span-9">
+        <div class="col-span-12 lg:col-span-12">
           <!--Subgrid-->
           {{> section/inventory/inventory-grid-content}}
         </div>

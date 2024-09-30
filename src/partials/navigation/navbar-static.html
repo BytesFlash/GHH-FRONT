@@ -1,19 +1,26 @@
 <nav class="
-    absolute
+    fixed
     w-full
     z-50
     transition-all
     duration-300
     ease-in-out
     flex flex-col flex-shrink-0
-    divide-y
-  " x-data="navbar()" x-init="initTheme()" x-on:mouseleave="megamenuOpened = false, openedMegamenu = ''" :class="[
-    scrolled || megamenuOpened || mobileOpen ? 'bg-muted-900 dark:bg-muted-800 divide-muted-800 dark:divide-muted-700 shadow-lg dark:shadow-muted-800/10' : 'divide-muted-200 dark:divide-muted-800',
-  ]">
+    
+  " x-data="navbar()" x-init="initTheme()" x-on:scroll.window="scroll()"
+  x-on:mouseleave="megamenuOpened = false, openedMegamenu = ''" x-bind:class="{
+    'bg-white shadow-lg shadow-muted-400/10': scrolled,
+    '': !scrolled,
+    'bg-white dark:bg-white-800': mobileOpen,
+    '': !mobileOpen,
+    
+}">
+
   <div class="w-full">
     <div class="
         w-full
         max-w-7xl
+        
         mx-auto
         flex flex-wrap
         py-2
@@ -23,18 +30,17 @@
         sm:justify-between
       ">
       <div class="flex justify-between items-center w-full lg:w-1/5">
-        <a href="/home.html" class="group flex font-sans font-light items-center gap-4"
-          :class="scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'">
+        <a href="/home.html" class="group flex font-sans font-light items-center gap-4 text-white">
           <div class="
-              h-14
-              w-14
+              h-19
+              w-19
               group-hover:text-primary-500
               transition-colors
               duration-300
             ">
             <img class="h-full w-full object-cover"
-              :src="!mobileOpen && !scrolled ? '/img/logo/logGHH-white.png' : '/img/logo/logGHH-black.png'"
-              alt="Cars in line" width="176" height="176" />
+              :src="!mobileOpen && !scrolled && $store.app.isDark ? '/img/logo/logGHH-white.png' : '/img/logo/logGHH-black.png'"
+              alt="Cars in line" width="576" height="576" />
           </div>
         </a>
 
@@ -62,9 +68,11 @@
                 duration-500
                 ease-in-out
               " :class="[
-                mobileOpen ? 'rotate-45' : '-translate-y-2',
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]"></span>
+              mobileOpen ? 'rotate-45' : '-translate-y-2 ',
+              'text-white': $store.app.isDark && !scrolled,
+              'text-black': $store.app.isDark && scrolled,
+              'text-black': !$store.app.isDark
+            ]"></span>
             <span class="
                 block
                 absolute
@@ -74,10 +82,12 @@
                 transition
                 duration-500
                 ease-in-out
-              " :class="[
-                mobileOpen ? 'opacity-0' : '',
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]"></span>
+              " :class="{
+                'opacity-0': mobileOpen,
+                'text-white': $store.app.isDark && !scrolled,
+                'text-black': $store.app.isDark && scrolled,
+                'text-black': !$store.app.isDark
+              }"></span>
             <span class="
                 block
                 absolute
@@ -87,10 +97,10 @@
                 transition
                 duration-500
                 ease-in-out
-              " :class="[
-                mobileOpen ? '-rotate-45' : 'translate-y-2',
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]"></span>
+              " :class="[mobileOpen ? '-rotate-45' : 'translate-y-2',
+              'text-white': $store.app.isDark && !scrolled,
+              'text-black': $store.app.isDark && scrolled,
+              'text-black': !$store.app.isDark]"></span>
           </div>
         </button>
       </div>
@@ -112,27 +122,28 @@
                 items-center
                 gap-1
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-                hover:text-primary-500
-              " :class="[
-                megamenuOpened ? 'z-40' : 'z-50',
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]">
-              <span>Vehicles</span>
+              " :class="{
+                'z-40': megamenuOpened,
+                'z-50': !megamenuOpened,
+                'text-white': $store.app.isDark && !scrolled,
+                'text-black': $store.app.isDark && scrolled,
+                'text-black': !$store.app.isDark
+              }">
+              <span>Vehiculos</span>
               <iconify-icon class="
                   iconify
                   w-5
                   h-5
                   flex items-center justify-center
-                  group-hover:text-primary-500
                   transition-transform
                   duration-300
                 " :class="[
-                  openedMegamenu === 'megamenu-1' && megamenuOpened ? 'rotate-180' : '',
-                  scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
+                openedMegamenu === 'megamenu-1' && megamenuOpened ? 'rotate-180' : '',
+
                 ]" icon="lucide:chevron-down"></iconify-icon>
             </button>
 
@@ -147,276 +158,71 @@
                 items-center
                 gap-1
                 text-base
-                font-sans font-light
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-                hover:text-primary-500
-              " :class="[
-                megamenuOpened ? 'z-40' : 'z-50',
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]">
-              <span>Brands</span>
+              " :class="{
+                'z-40': megamenuOpened,
+                'z-50': !megamenuOpened,
+                'text-white': $store.app.isDark && !scrolled,
+                'text-black': $store.app.isDark && scrolled,
+                'text-black': !$store.app.isDark
+              }">
+              <span>Servicios</span>
               <iconify-icon class="
                   iconify
                   w-5
                   h-5
                   flex items-center justify-center
-                  group-hover:text-primary-500
                   transition-transform
                   duration-300
                 " :class="[
-                  openedMegamenu === 'megamenu-2' && megamenuOpened ? 'rotate-180' : '',
-                  scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-                ]" icon="lucide:chevron-down"></iconify-icon>
+                openedMegamenu === 'megamenu-2' && megamenuOpened ? 'rotate-180' : '',
+            ]" icon="lucide:chevron-down"></iconify-icon>
             </button>
             <!--Megamenu-->
             {{> navigation/megamenu-brands}}
           </li>
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="/inventory.html" class="
-                block
-                text-base
-                font-sans font-light
-                hover:text-primary-500
-                py-2
-                md:mx-2
-                tw-accessibility
-              " :class="[
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]">
-              Inventory
+            <a href="/" class="
+            block
+            text-base
+            font-semibold 
+            py-2
+            md:mx-2
+            tw-accessibility
+          " :class="{
+          'z-40': megamenuOpened,
+          'z-50': !megamenuOpened,
+          'text-white': $store.app.isDark && !scrolled,
+          'text-black': $store.app.isDark && scrolled,
+          'text-black': !$store.app.isDark
+          }">
+              Nosotros
             </a>
           </li>
+
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="/dashboard.html" class="
+            <a href="/" class="
                 block
                 text-base
-                font-sans font-light
-                hover:text-primary-500
+                font-semibold 
                 py-2
                 md:mx-2
                 tw-accessibility
-              " :class="[
-                scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-              ]">
-              Account
+              " :class="{
+                'text-white': $store.app.isDark && !scrolled,
+                'text-black': $store.app.isDark && scrolled,
+                'text-black': !$store.app.isDark
+          }">
+              Contactanos
             </a>
           </li>
         </ul>
-        <div class="flex flex-col my-3 lg:hidden">
-          <div class="flex items-center justify-center mb-4">
-            <!--Dark mode-->
-            {{> theme/theme-toggler}}
-          </div>
-          <a href="/signup.html" class="
-              relative
-              w-full
-              font-sans font-normal
-              inline-flex
-              items-center
-              justify-center
-              leading-5
-              no-underline
-              min-w-[130px]
-              space-x-1
-              text-white
-              bg-primary-500
-              h-12
-              px-5
-              py-3
-              text-base
-              hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/20
-              tw-accessibility
-              transition-all
-              duration-300
-            ">
-            Register
-          </a>
-        </div>
-      </div>
-
-      <div class="
-          hidden
-          lg:flex lg:items-center lg:w-1/5 lg:justify-end lg:gap-x-2
-        ">
-        <button type="button" class="
-            group
-            h-12
-            w-12
-            rounded-full
-            flex
-            items-center
-            justify-center
-            tw-accessibility
-          ">
-          <div class="
-              h-10
-              w-10
-              flex
-              items-center
-              justify-center
-              rounded-full
-              group-hover:text-primary-500
-              transition-colors
-              duration-300
-            " :class="[
-              scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-            ]">
-            <iconify-icon class="iconify w-4 h-4" icon="lucide:search"></iconify-icon>
-          </div>
-        </button>
-        <div class="h-10 w-10 flex items-center justify-center">
-          <!--Dark mode-->
-          {{> theme/theme-toggler-base}}
-        </div>
-        <a href="/dashboard-bookmarks.html" class="
-            relative
-            font-sans font-normal
-            inline-flex
-            items-center
-            justify-center
-            leading-5
-            no-underline
-            space-x-1
-            text-white
-            bg-muted-800/30
-            dark:bg-muted-900
-            h-10
-            w-10
-            text-base
-            hover:bg-muted-700
-            dark:hover:bg-muted-1000
-            tw-accessibility
-            transition-all
-            duration-300
-          ">
-          <iconify-icon class="iconify w-4 h-4" icon="lucide:heart"></iconify-icon>
-        </a>
-        <a href="/dashboard.html" class="
-            relative
-            font-sans font-normal
-            inline-flex
-            items-center
-            justify-center
-            leading-5
-            no-underline
-            space-x-1
-            text-white
-            bg-muted-800/30
-            dark:bg-muted-900
-            h-10
-            w-10
-            text-base
-            hover:bg-muted-700
-            dark:hover:bg-muted-1000
-            tw-accessibility
-            transition-all
-            duration-300
-          ">
-          <iconify-icon class="iconify w-4 h-4" icon="lucide:user"></iconify-icon>
-        </a>
       </div>
     </div>
   </div>
 
-  <div class="w-full">
-    <div class="
-        w-full
-        max-w-7xl
-        mx-auto
-        flex
-        py-2
-        px-5
-        flex-row
-        items-center
-        gap-6
-        xs:overflow-x-auto
-      ">
-      <div>
-        <a href="/inventory.html" class="
-            block
-            flex-1
-            text-sm
-            font-sans font-light
-            hover:text-primary-500
-            py-2
-            md:mx-2
-            tw-accessibility
-          " :class="[
-            scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-          ]">
-          Models
-        </a>
-      </div>
-      <div>
-        <a href="/inventory.html" class="
-            block
-            flex-1
-            text-sm
-            font-sans font-light
-            hover:text-primary-500
-            py-2
-            md:mx-2
-            whitespace-nowrap
-            tw-accessibility
-          " :class="[
-            scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-          ]">
-          Buy online
-        </a>
-      </div>
-      <div>
-        <a href="/services.html" class="
-            block
-            flex-1
-            text-sm
-            font-sans font-light
-            hover:text-primary-500
-            py-2
-            md:mx-2
-            whitespace-nowrap
-            tw-accessibility
-          " :class="[
-            scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-          ]">
-          Services
-        </a>
-      </div>
-      <div class="md:ml-auto">
-        <a href="/about.html" class="
-            block
-            flex-1
-            text-sm
-            font-sans font-light
-            hover:text-primary-500
-            py-2
-            md:mx-2
-            whitespace-nowrap
-            tw-accessibility
-          " :class="[
-            scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-          ]">
-          Company
-        </a>
-      </div>
-      <div>
-        <a href="/contact.html" class="
-            block
-            flex-1
-            text-sm
-            font-sans font-light
-            hover:text-primary-500
-            py-2
-            md:mx-2
-            whitespace-nowrap
-            tw-accessibility
-          " :class="[
-            scrolled || megamenuOpened || mobileOpen ? 'text-white' : 'text-muted-800 dark:text-white'
-          ]">
-          Contact
-        </a>
-      </div>
-    </div>
-  </div>
+
 </nav>
