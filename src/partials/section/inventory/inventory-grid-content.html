@@ -4,11 +4,26 @@
       <div class="col-span-12 lg:col-span-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <template x-for="vehicle in filteredVehicles()" :key="vehicle.model">
-            <div class="p-4 border dark:border-muted-700 rounded-lg">
-              <img :src="vehicle.image" alt="vehicle model" class="w-full h-auto">
-              <h3 class="mt-2 font-bold text-lg" x-text="vehicle.brand + ' ' + vehicle.model"></h3>
-              <p class="mt-2" x-text="vehicle.detail"></p>
-              <a :href="vehicle.detailsUrl" class="text-blue-600 hover:underline mt-4 inline-block">Ficha técnica</a>
+            <!-- Tarjeta de vehículo con tamaño fijo y flexbox para distribuir -->
+            <div class="p-4 border dark:border-muted-700 rounded-lg h-full flex flex-col justify-between min-h-[450px]">
+
+              <!-- Imagen fija con tamaño uniforme -->
+              <div class="h-48 w-full">
+                <img :src="vehicle.image" alt="vehicle model" class="w-full h-full object-cover rounded-lg">
+              </div>
+
+              <!-- Título centrado -->
+              <h3 class="mt-4 font-bold text-lg text-center" x-text="vehicle.brand + ' ' + vehicle.model"></h3>
+
+              <!-- Descripción con altura fija para asegurar que los títulos se alineen -->
+              <p class="mt-2 text-base leading-relaxed text-muted-800 dark:text-muted-200 text-justify h-48 overflow-hidden"
+                x-text="vehicle.detail"></p>
+
+              <!-- Enlace a la ficha técnica -->
+              <a :href="vehicle.ficha" target="_blank"
+                class="text-blue-600 hover:underline mt-4 inline-block text-center">
+                Ficha técnica
+              </a>
             </div>
           </template>
         </div>
