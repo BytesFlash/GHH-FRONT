@@ -1,26 +1,34 @@
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('inventory', () => ({
-      vehicles: [],
-      dataLoaded: false,  // Control para verificar si los datos ya fueron cargados
-      activeBrand: 'all',  // Para controlar la marca seleccionada
+      vehicles: [],           // Lista completa de vehículos
+      filteredList: [],       // Lista filtrada
+      dataLoaded: false,      // Control para verificar si los datos ya fueron cargados
+      activeBrand: 'all',     // Para controlar la marca seleccionada
+
       async init() {
         // Solo carga los datos si no han sido cargados previamente
         if (!this.dataLoaded) {
           const response = await fetch('data/vehicule.json');  // Verifica que la ruta sea correcta
           const data = await response.json();
           this.vehicles = data.vehicules;  // Cargar los vehículos desde el JSON
+          this.filteredList = [...this.vehicles];  // Inicialmente, todos los vehículos
           this.dataLoaded = true;  // Marcar como cargado
         }
       },
-      filteredVehicles() {
-        if (this.activeBrand === "all") {
-          return this.vehicles;
-        } else {
-          return this.vehicles.filter(vehicle => vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase());
-        }
 
+      filteredVehicles() {
+        // Filtrar los vehículos dependiendo de la marca activa
+        if (this.activeBrand === 'all') {
+          this.filteredList = [...this.vehicles];  // Mantener una copia de todos los vehículos
+        } else {
+          this.filteredList = this.vehicles.filter(vehicle =>
+            vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase()
+          );
+        }
+        return this.filteredList;  // Retornar la lista filtrada
       },
+
       resetScroll() {
         window.scrollTo(0, 0);  // Opcional, para regresar el scroll al tope
       }
@@ -28,7 +36,11 @@
   });
 </script>
 
-<section x-data="inventory()" class="w-full py-12 px-4 bg-muted-100 dark:bg-muted-1000">
+
+
+
+<section x-data="inventory()" class="w-full py-12 px-4 bg-muted-100 dark:bg-muted-1000"
+  x-init="activeBrand = localStorage.getItem('selectedBrand') || 'all'; init();">
   <div class="relative w-full h-full max-w-7xl mx-auto">
 
     <!--Inventory toolbar-->

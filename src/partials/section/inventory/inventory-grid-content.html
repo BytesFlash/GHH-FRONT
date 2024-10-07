@@ -3,7 +3,8 @@
     <div class="grid grid-cols-12 md:gap-2 pb-20">
       <div class="col-span-12 lg:col-span-12">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <template x-for="vehicle in filteredVehicles()" :key="vehicle.model">
+          <!-- Aquí aseguramos que cada vehículo tenga una clave única para evitar la duplicación -->
+          <template x-for="(vehicle, index) in filteredVehicles()" :key="vehicle.model + index">
             <!-- Tarjeta de vehículo con tamaño fijo y flexbox para distribuir -->
             <div class="p-4 border dark:border-muted-700 rounded-lg h-full flex flex-col justify-between min-h-[450px]">
 
