@@ -1,13 +1,36 @@
 {
     "vehicules": [
         {
-            "brand": "Maquina de perforación",
-            "model": "FM 1.7",
-            "icon": "/img/vehicles/grid/Face-Master-1.7_2.png",
-            "image": "/img/vehicles/grid/Face-Master-1.7_2.png",
+            "brand": "Cargadores",
+            "model": "LF-14",
+            "icon": "/img/vehicles/grid/lf14.png",
+            "image": "/img/vehicles/grid/lf14.png",
             "detailsUrl": "path/to/vehicle.html",
-            "detail": "Equipo de perforación mecanizado está diseñado para perforar tiros de diámetros entre 41 mm y 76 mm y con una longitud neta de 3,2 m y ajustable según necesidades de operación. El diseño permite la perforación eficaz en secciones desde una altura de 2.0 m.",
-            "ficha": "img/fichas/FM-1.7-EN-tech-data.pdf",
+            "detail": "La cargadora LF-14, de 14 toneladas métricas, es versátil, robusta y confiable. Está diseñada no solo para aplicaciones en roca dura, sino que también es apta para operar en túneles y en aplicaciones en roca blanda.",
+            "ficha": "img/fichas/GHH-LF-14-Spec-Sheet.pdf",
+            "specs": {
+                "0-60mph": "4.4s",
+                "topSpeed": "135mph",
+                "autonomy": "389mi"
+            },
+            "features": [
+                "Midnight Silver Metallic Paint",
+                "20’’ Überturbine Wheels",
+                "All Black Premium Interior"
+            ],
+            "upgrades": [
+                "Performance Upgrade",
+                "Carbon Fiber Spoiler"
+            ]
+        },
+        {
+            "brand": "Cargadores",
+            "model": "LF-10 NEO",
+            "icon": "/img/vehicles/grid/lf10Neo.png",
+            "image": "/img/vehicles/grid/lf10Neo.png",
+            "detailsUrl": "path/to/vehicle.html",
+            "detail": "La LF-10 NEO, llenará el vacío existente entre las cargadoras LF7, LF-8 y LF-14. Con el diseño de enlace en Z y la mayor altura de vuelco de su clase, y la mayor potencia nominal, esta cargadora se convierte en una de las mejores. Su capacidad para cargar todos los camiones de 30 toneladas del mercado le otorga una ventaja de vanguardia.",
+            "ficha": "img/fichas/GHH-LF10-NEO_Spec-sheet-EN-8-10-Oct-2022-DIGITAL-LD.pdf",
             "specs": {
                 "0-60mph": "4.4s",
                 "topSpeed": "135mph",
