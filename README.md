@@ -1,75 +1,58 @@
-# 👋 Finity
-> Finity is a car retailer UI template built by [cssninjaStudio](https://cssninja.io).
+# 👋 GHH - Maquinaria Minera
+> GHH es una empresa especializada en la venta de maquinaria para la minería, desarrollada y mantenida por [bytesflash](https://github.com/bytesflash).
 
-[![cssninja-discord](https://img.shields.io/discord/785473098069311510?label=join%20us%20on%20discord&color=6944EC)](https://go.cssninja.io/discord)
 
-## ✌️ preview
+## ✌️ Vista previa
 
-Check out the live demo by clicking [here](https://finity.cssninja.io/). 
-Finity is built with [Tailwind CSS](https://tailwindcss.com/) and [Alpine JS](https://github.com/alpinejs/alpine).
+Visita la página web [aquí](https://ghh.cl)
+El sitio está construido con [Tailwind CSS](https://tailwindcss.com/) y [Alpine JS](https://github.com/alpinejs/alpine).
 
-## 👍 Features
+## 👍 Características
 
-* Tailwind v3.x
-* Alpine v3.x
-* RTL support
+* Diseño moderno con Tailwind v3.x
+* Interactividad con Alpine v3.x
+* Soporte RTL (Right-to-Left)
 
-### Requirements
+### Requisitos
 
-To use this template, your computer needs:
+Para utilizar y desplegar este sitio web, necesitarás:
 
-- Node.js (>= 16.x.x) is used to run the build processes. https://nodejs.org/en/download/
-- Test: run `node -v` in the terminal
+- Node.js (>= 16.x.x) para ejecutar los procesos de construcción. Descárgalo aquí: https://nodejs.org/en/download/
+- Test: ejecuta `node -v` en el terminal para verificar la versión.
 
-## 👌 Usage
+## 👌 Uso
 
-1. enable pnpm with corepack
+1. Habilitar `pnpm` con corepack
 
 ```bash
 corepack enable
 corepack prepare pnpm@latest --activate
 ```
 
-> _corepack is installed with Node.js from **v16.13.x**, if your version is below, install it with: `npm install -g corepack`, or upgrade Node.js_ 
+> _corepack viene instalado con Node.js desde la versión **v16.13.x**. Si tu versión es inferior, instálalo con: `npm install -g corepack`, o actualiza Node.js._
 
-2. Install depedencies
+2. Instalar dependencias
 
 ```bash
 pnpm i
 ```
 
-3. To start development server
+3. Para iniciar el servidor de desarrollo:
 
 ```bash
 pnpm dev
 ```
 
-## 💡 What to do next ?
+## 🍔 Problemas
 
-Our online documentation is a great place to learn how to use Bulkit.
-We try to keep it mostly up to date, so you can always find the latest information.
+Si encuentras algún problema o bug, puedes reportarlo en la sección de issues de este repositorio. Por favor, sigue estas pautas al reportar:
 
-> We also have a great [discord community](https://discord.cssninja.io/) where you can ask questions and show your work.
+* Definición del problema
+* Comportamiento esperado
+* Comportamiento actual
+* Pasos para reproducir
+* Intentos de solución previos (si los hay)
 
-### [Plex on docs.cssninja.io](https://docs.cssninja.io/plex/?utm_source=readme)
-
-## 🍔 Issues
-
-If you've found an issue or a bug, you can report it in the issues section of this repository. Please try to follow these simple guidelines to report your issue:
-
-* Issue definition
-* Expected behaviour
-* Actual behaviour
-* steps to reproduce
-* Already tried fixes (if relevant)
-
-## 🎉 More
-
-Find more premium webapp and website templates on [Css Ninja](https://cssninja.io/).
-
-## 🚀 About Us
-
-Css Ninja is a web design studio. We build handcrafted and polished templates that will give some hype to your startup or to your next project.
 
 
 
