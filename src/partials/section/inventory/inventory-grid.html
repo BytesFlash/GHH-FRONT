@@ -1,36 +1,50 @@
 <script>
   document.addEventListener('alpine:init', () => {
     Alpine.data('inventory', () => ({
-      vehicles: [],           // Lista completa de vehículos
-      filteredList: [],       // Lista filtrada
-      dataLoaded: false,      // Control para verificar si los datos ya fueron cargados
-      activeBrand: 'all',     // Para controlar la marca seleccionada
+      vehicles: [], // Lista completa de vehículos
+      filteredList: [], // Lista filtrada
+      dataLoaded: false, // Control para verificar si los datos ya fueron cargados
+      activeBrand: 'all', // Marca seleccionada
+      isModalOpen: false, // Estado del modal
+      selectedVehicle: null, // Vehículo seleccionado para el modal
+      showFullText: [], // Control para mostrar el texto completo en las tarjetas
 
       async init() {
-        // Solo carga los datos si no han sido cargados previamente
+        // Cargar datos solo si no están ya cargados
         if (!this.dataLoaded) {
-          const response = await fetch('data/vehicule.json');  // Verifica que la ruta sea correcta
+          const response = await fetch('data/vehicule.json'); // Verifica la ruta del JSON
           const data = await response.json();
-          this.vehicles = data.vehicules;  // Cargar los vehículos desde el JSON
-          this.filteredList = [...this.vehicles];  // Inicialmente, todos los vehículos
-          this.dataLoaded = true;  // Marcar como cargado
+          this.vehicles = data.vehicules;
+          this.filteredList = [...this.vehicles];
+          this.dataLoaded = true;
+
+          // Inicializar control para mostrar o no el texto completo
+          this.showFullText = Array(this.vehicles.length).fill(false);
         }
       },
 
       filteredVehicles() {
-        // Filtrar los vehículos dependiendo de la marca activa
+        // Filtrar vehículos dependiendo de la marca activa
         if (this.activeBrand === 'all') {
-          this.filteredList = [...this.vehicles];  // Mantener una copia de todos los vehículos
+          this.filteredList = [...this.vehicles];
         } else {
-          this.filteredList = this.vehicles.filter(vehicle =>
-            vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase()
-          );
+          this.filteredList = this.vehicles.filter(vehicle => vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase());
         }
-        return this.filteredList;  // Retornar la lista filtrada
+        return this.filteredList;
       },
 
-      resetScroll() {
-        window.scrollTo(0, 0);  // Opcional, para regresar el scroll al tope
+      openModal(vehicle) {
+        this.selectedVehicle = vehicle;
+        this.isModalOpen = true;
+      },
+
+      closeModal() {
+        this.isModalOpen = false;
+        this.selectedVehicle = null;
+      },
+
+      toggleShowFullText(index) {
+        this.showFullText[index] = !this.showFullText[index];
       }
     }));
   });
