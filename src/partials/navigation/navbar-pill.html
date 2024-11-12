@@ -1,5 +1,4 @@
-<div
-  class="
+<div class="
     absolute
     top-4
     inset-x-0
@@ -13,71 +12,34 @@
     shadow-xl shadow-muted-400/10
     dark:shadow-muted-800/10
     z-10
-  "
->
-  <div
-    class="
+  ">
+  <div class="
       w-full
       flex
       font-medium
       items-center
-      justify-between
+      justify-center
       gap-4
       text-muted-900
       dark:text-muted-100
-    "
-  >
+    ">
     <!--Home link-->
-    <a
-      href="/home.html"
-      class="
-        flex
-        items-center
-        justify-center
-        h-14
-        w-14
-        rounded
-        text-muted-400
-        hover:text-primary-500
-        border border-muted-200
-        dark:border-muted-700
-        hover:border-primary-500
-        dark:hover:border-primary-500
-        hover:shadow-xl
-        shadow-muted-400/10
-        dark:hover:shadow-muted-800/10
-        transition-all
-        duration-300
-      "
-    >
-      <iconify-icon class="iconify w-6 h-6 flex items-center justify-center text-lg" icon="ph:house-duotone"></iconify-icon>
-    </a>
     <!--Site logo-->
-    <div
-      class="
+    <div class="
         h-14
-        w-14
+        w-19
         group-hover:text-primary-500
         transition-colors
         duration-300
-      "
-    >
-      {{> vector/logos/logo}}
+      ">
+      <a href="/home.html">
+        <img class="h-full w-full object-cover" src="/img/logo/logGHH-black.png" alt="Cars in line" width="976"
+          height="476" />
+
+      </a>
+
     </div>
     <!--Theme toggler-->
-    <div
-      class="
-        flex
-        items-center
-        justify-center
-        h-14
-        w-14
-        rounded
-        bg-muted-100
-        dark:bg-muted-700
-      "
-    >
-      {{> theme/theme-toggler-base}}
-    </div>
+
   </div>
 </div>
