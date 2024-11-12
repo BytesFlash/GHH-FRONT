@@ -7,3 +7,6 @@
   framework = "#auto"
   targetPort = 3000
   port = 8888
+
+[build.environment]
+NODE_VERSION = "18.18.0"  
