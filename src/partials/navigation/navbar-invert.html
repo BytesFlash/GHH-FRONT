@@ -206,8 +206,10 @@
                 md:mx-2
                 tw-accessibility
               " :class="{
-              'text-white': !scrolled && !mobileOpen,
-              'text-black': scrolled,
+                'z-40': megamenuOpened,
+                'z-50': !megamenuOpened,
+                'text-white': !scrolled && !mobileOpen,
+                'text-black': scrolled && mobileOpen,
           }">
               Contactanos
             </a>
