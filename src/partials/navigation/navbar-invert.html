@@ -198,24 +198,6 @@
           </li>
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
             <a href="contact.html" class="
-            block
-            text-base
-            font-semibold 
-            py-2
-            md:mx-2
-            tw-accessibility
-          " :class="{
-          'z-40': megamenuOpened,
-          'z-50': !megamenuOpened,
-          'text-white': !scrolled && !mobileOpen,
-          'text-black': scrolled && mobileOpen,
-          }">
-              Nosotros
-            </a>
-          </li>
-
-          <li class="relative" x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="contact.html" class="
                 block
                 text-base
                 font-semibold 
@@ -223,11 +205,9 @@
                 md:mx-2
                 tw-accessibility
               " :class="{
-                'z-40': megamenuOpened,
-                'z-50': !megamenuOpened,
                 'text-white': !scrolled && !mobileOpen,
-                'text-black': scrolled && mobileOpen,
-          }">
+                'text-black': scrolled || mobileOpen,
+              }">
               Contactanos
             </a>
           </li>
