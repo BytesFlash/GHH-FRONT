@@ -179,22 +179,38 @@
             <!--Megamenu-->
             {{> navigation/megamenu-brands}}
           </li>
-          <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
-            <a href="/" class="
-            block
-            text-base
-            font-semibold 
-            py-2
-            md:mx-2
-            tw-accessibility
-          " :class="{
-          'z-40': megamenuOpened,
-          'z-50': !megamenuOpened,
-          'text-white': !scrolled && !mobileOpen,
-          'text-black': scrolled && mobileOpen,
-          }">
-              Nosotros
-            </a>
+          <li class="relative" x-on:mouseover="megamenuOpened = true, openedMegamenu = 'megamenu-3'">
+            <button type="button" class="
+                group
+                relative
+                inline-flex
+                items-center
+                gap-1
+                text-base
+                font-semibold 
+                py-2
+                md:mx-2
+                tw-accessibility
+              " :class="{
+              'z-40': megamenuOpened,
+              'z-50': !megamenuOpened,
+              'text-white': !scrolled && !mobileOpen,
+              'text-black': scrolled,
+              }">
+              <span>Nosotros</span>
+              <iconify-icon class="
+                  iconify
+                  w-5
+                  h-5
+                  flex items-center justify-center
+                  transition-transform
+                  duration-300
+                " :class="[
+                openedMegamenu === 'megamenu-3' && megamenuOpened ? 'rotate-180' : '',
+            ]" icon="lucide:chevron-down"></iconify-icon>
+            </button>
+            <!--Megamenu-->
+            {{> navigation/megamenu-history}}
           </li>
           <li x-on:mouseover="megamenuOpened = false, openedMegamenu = ''">
             <a href="/contact" class="

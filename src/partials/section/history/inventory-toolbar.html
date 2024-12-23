@@ -1,0 +1,89 @@
+<div class="
+    sticky
+    top-4
+    w-full
+    flex
+    bg-white
+    dark:bg-muted-800
+    border border-muted-200
+    dark:border-muted-700
+    rounded
+    divide-x divide-muted-200
+    dark:divide-muted-700
+    shadow-xl shadow-muted-300/30
+    dark:shadow-muted-900/30
+    overflow-x-auto
+    z-30
+  " x-init="activeBrand = localStorage.getItem('selectedBrand') || 'all'">
+
+  <button class="group flex-1 flex items-center gap-2 px-5 py-3"
+    :class="activeBrand === 'all' ? 'bg-muted-50 dark:bg-muted-700' : ''"
+    @click="activeBrand = 'all'; localStorage.setItem('selectedBrand', 'all'); resetScroll()">
+    <span>Todos</span>
+  </button>
+
+  <button
+    class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800 dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300"
+    :class="activeBrand === 'Cargadores' ? 'bg-muted-50 dark:bg-muted-700' : ''"
+    @click="activeBrand = 'Cargadores'; localStorage.setItem('selectedBrand', 'Cargadores'); resetScroll()">
+    <div class="w-full max-w-[80px] my-2 text-muted-500">
+      <img class="h-full w-full object-cover" src="/img/vehicles/icon/cargadores.png" alt="Cargadores" />
+    </div>
+    <span>Cargadores</span>
+  </button>
+  <button
+    class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800 dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300"
+    :class="activeBrand === 'Equipos utilitarios' ? 'bg-muted-50 dark:bg-muted-700' : ''"
+    @click="activeBrand = 'Equipos utilitarios'; localStorage.setItem('selectedBrand', 'Equipos utilitarios'); resetScroll()">
+    <div class="w-full max-w-[80px] my-2 text-muted-500">
+      <img class="h-full w-full object-cover" src="/img/vehicles/icon/explosivo.png" alt="Utilitarios" />
+    </div>
+    <span>Utilitarios</span>
+  </button>
+  <button
+    class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800 dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300"
+    :class="activeBrand === 'Equipos volcadores' ? 'bg-muted-50 dark:bg-muted-700' : ''"
+    @click="activeBrand = 'Equipos volcadores'; localStorage.setItem('selectedBrand', 'Equipos volcadores'); resetScroll()">
+    <div class="w-full max-w-[80px] my-2 text-muted-500">
+      <img class="h-full w-full object-cover" src="/img/vehicles/icon/dumper.png" alt="volcadores" />
+    </div>
+    <span>Dumper</span>
+  </button>
+  <!--   <button class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800
+    dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300 " :class="
+    activeBrand==='mercedes' ? 'bg-muted-50 dark:bg-muted-700' : ''" @click=" activeBrand='mercedes' , resetScroll()">
+    <span class="block h-10 w-10 group-hover:text-primary-500"
+      :class="activeBrand === 'mercedes' ? 'text-primary-500' : ''">
+      {{> vector/logos/mercedes-icon}}
+    </span>
+    <span>Mercedes</span>
+  </button> -->
+  <!--   <button class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800
+    dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300 " :class="
+    activeBrand==='landrover' ? 'bg-muted-50 dark:bg-muted-700' : ''"
+    @click=" activeBrand='landrover' , resetScroll()">
+    <span class="block h-10 w-10 group-hover:text-primary-500"
+      :class="activeBrand === 'landrover' ? 'text-primary-500' : ''">
+      {{> vector/logos/landrover-icon}}
+    </span>
+    <span>Land Rover</span>
+  </button> -->
+  <!--   <button class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800
+    dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300 " :class="
+    activeBrand==='jaguar' ? 'bg-muted-50 dark:bg-muted-700' : ''" @click=" activeBrand='jaguar' , resetScroll()">
+    <span class="block h-10 w-10 group-hover:text-primary-500"
+      :class="activeBrand === 'jaguar' ? 'text-primary-500' : ''">
+      {{> vector/logos/jaguar-icon}}
+    </span>
+    <span>Jaguar</span>
+  </button> -->
+  <!--   <button class="group flex-1 flex items-center gap-2 px-5 py-3 whitespace-nowrap font-sans text-muted-800
+    dark:text-muted-100 hover:bg-muted-50 dark:hover:bg-muted-700 transition-colors duration-300 " :class="
+    activeBrand==='hyundai' ? 'bg-muted-50 dark:bg-muted-700' : ''" @click=" activeBrand='hyundai' , resetScroll()">
+    <span class="block h-10 w-10 group-hover:text-primary-500"
+      :class="activeBrand === 'hyundai' ? 'text-primary-500' : ''">
+      {{> vector/logos/hyundai-icon}}
+    </span>
+    <span>Hyundai</span>
+  </button> -->
+</div>

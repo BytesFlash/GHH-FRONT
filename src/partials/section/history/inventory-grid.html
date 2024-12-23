@@ -1,0 +1,77 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('history', () => ({
+      vehicles: [], // Lista completa de vehículos
+      filteredList: [], // Lista filtrada
+      dataLoaded: false, // Control para verificar si los datos ya fueron cargados
+      activeBrand: 'all', // Marca seleccionada
+      isModalOpen: false, // Estado del modal
+      selectedVehicle: null, // Vehículo seleccionado para el modal
+      showFullText: [], // Control para mostrar el texto completo en las tarjetas
+
+      async init() {
+        // Cargar datos solo si no están ya cargados
+        if (!this.dataLoaded) {
+          const response = await fetch('data/vehicule.json'); // Verifica la ruta del JSON
+          const data = await response.json();
+          this.vehicles = data.vehicules;
+          this.filteredList = [...this.vehicles];
+          this.dataLoaded = true;
+
+          // Inicializar control para mostrar o no el texto completo
+          this.showFullText = Array(this.vehicles.length).fill(false);
+        }
+      },
+
+      filteredVehicles() {
+        // Filtrar vehículos dependiendo de la marca activa
+        if (this.activeBrand === 'all') {
+          this.filteredList = [...this.vehicles];
+        } else {
+          this.filteredList = this.vehicles.filter(vehicle => vehicle.brand.trim().toLowerCase() === this.activeBrand.trim().toLowerCase());
+        }
+        return this.filteredList;
+      },
+
+      openModal(vehicle) {
+        this.selectedVehicle = vehicle;
+        this.isModalOpen = true;
+      },
+
+      closeModal() {
+        this.isModalOpen = false;
+        this.selectedVehicle = null;
+      },
+
+      toggleShowFullText(index) {
+        this.showFullText[index] = !this.showFullText[index];
+      }
+    }));
+  });
+</script>
+
+
+
+
+<section x-data="history()" class="w-full  px-4 bg-muted-100 dark:bg-muted-1000"
+  x-init="activeBrand = localStorage.getItem('selectedBrand') || 'all'; init();">
+  <div class="relative w-full h-full max-w-7xl mx-auto">
+
+    <!--Inventory toolbar-->
+
+
+    <!--Grid wrapper-->
+
+    <!--Filters-->
+    <!-- <div class="hidden lg:block col-span-12 lg:col-span-3"> 
+             {{!-- {{> section/inventory/inventory-grid-filters}} --}}
+        </div> -->
+
+    <!--Content-->
+    <div class="col-span-12 lg:col-span-12">
+      <!--Subgrid-->
+      {{> section/history/inventory-grid-content}}
+
+    </div>
+  </div>
+</section>
